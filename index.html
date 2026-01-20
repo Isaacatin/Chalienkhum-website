@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching Centre for Excellence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Source+Sans+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    .heading-font {
+      font-family: 'Playfair Display', serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
+    }
+    .card-gradient {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+    }
+    .gold-accent {
+      color: #d69e2e;
+    }
+    .gold-bg {
+      background-color: #d69e2e;
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #d69e2e;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .faculty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .faculty-card {
+      transition: all 0.4s ease;
+    }
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+    .result-bar {
+      animation: growWidth 1.5s ease-out forwards;
+    }
+    @keyframes growWidth {
+      from { width: 0; }
+    }
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full overflow-auto scroll-smooth" style="background: #f8fafc;"><!-- Navigation -->
+   <nav class="gradient-bg sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md">
+        <svg class="w-8 h-8 text-blue-800" viewbox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+        </svg>
+       </div>
+       <div>
+        <h1 id="nav-title" class="text-white font-bold text-xl heading-font">Coaching Centre for Excellence</h1>
+        <p class="text-blue-200 text-xs">NEET &amp; JEE Specialists</p>
+       </div>
+      </div>
+      <div class="hidden md:flex items-center gap-6"><a href="#dashboard" class="nav-link text-white text-sm font-semibold">Dashboard</a> <a href="#about" class="nav-link text-white text-sm font-semibold">About</a> <a href="#courses" class="nav-link text-white text-sm font-semibold">Courses</a> <a href="#faculty" class="nav-link text-white text-sm font-semibold">Faculty</a> <a href="#fees" class="nav-link text-white text-sm font-semibold">Fees</a> <a href="#schedule" class="nav-link text-white text-sm font-semibold">Schedule</a> <a href="#results" class="nav-link text-white text-sm font-semibold">Results</a> <a href="#register" class="gold-bg text-blue-900 px-4 py-2 rounded-full text-sm font-bold hover:bg-yellow-400 transition-all shadow-md">Register Now</a>
+      </div><button id="mobile-menu-btn" class="md:hidden text-white">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-blue-400 pt-4">
+      <div class="flex flex-col gap-3"><a href="#dashboard" class="text-white text-sm font-semibold">Dashboard</a> <a href="#about" class="text-white text-sm font-semibold">About</a> <a href="#courses" class="text-white text-sm font-semibold">Courses</a> <a href="#faculty" class="text-white text-sm font-semibold">Faculty</a> <a href="#fees" class="text-white text-sm font-semibold">Fees</a> <a href="#schedule" class="text-white text-sm font-semibold">Schedule</a> <a href="#results" class="text-white text-sm font-semibold">Results</a> <a href="#register" class="gold-bg text-blue-900 px-4 py-2 rounded-full text-sm font-bold text-center mt-2">Register Now</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section / Dashboard -->
+   <section id="dashboard" class="gradient-bg py-16 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+     <div class="absolute top-10 left-10 w-32 h-32 border-4 border-white rounded-full"></div>
+     <div class="absolute bottom-10 right-10 w-48 h-48 border-4 border-white rounded-full"></div>
+     <div class="absolute top-1/2 left-1/3 w-24 h-24 border-2 border-white rounded-full"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+     <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full mb-6"><span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span> <span class="text-white text-sm">Admissions Open 2025</span>
+      </div>
+      <h1 id="hero-title" class="text-4xl md:text-6xl font-bold text-white heading-font mb-4">Coaching Centre for Excellence</h1>
+      <p id="hero-tagline" class="text-xl md:text-2xl text-blue-200 mb-8">Your Gateway to Medical &amp; Engineering Dreams</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="#register" class="gold-bg text-blue-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg transform hover:scale-105"> Enroll Now → </a> <a href="#courses" class="bg-white/20 backdrop-blur text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/30 transition-all"> Explore Courses </a>
+      </div>
+     </div><!-- Stats Dashboard -->
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center border border-white/20">
+       <div class="text-4xl font-bold text-white heading-font">
+        15+
+       </div>
+       <div class="text-blue-200 text-sm mt-1">
+        Years Experience
+       </div>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center border border-white/20">
+       <div class="text-4xl font-bold gold-accent heading-font">
+        5000+
+       </div>
+       <div class="text-blue-200 text-sm mt-1">
+        Students Enrolled
+       </div>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center border border-white/20">
+       <div class="text-4xl font-bold text-white heading-font">
+        95%
+       </div>
+       <div class="text-blue-200 text-sm mt-1">
+        Success Rate
+       </div>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center border border-white/20">
+       <div class="text-4xl font-bold gold-accent heading-font">
+        50+
+       </div>
+       <div class="text-blue-200 text-sm mt-1">
+        Expert Faculty
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Who We Are</span>
+      <h2 id="about-heading" class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">About Us</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <div class="relative">
+        <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-lg -z-10"></div>
+        <div class="bg-gradient-to-br from-blue-800 to-blue-600 rounded-2xl p-8 text-white shadow-2xl">
+         <svg class="w-16 h-16 mb-4 text-yellow-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+         </svg>
+         <h3 class="text-2xl font-bold heading-font mb-4">Excellence Since 2009</h3>
+         <p class="text-blue-100 leading-relaxed">Coaching Centre for Excellence has been shaping futures for over 15 years, dedicated exclusively to NEET and JEE preparation.</p>
+        </div>
+        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-yellow-100 rounded-lg -z-10"></div>
+       </div>
+      </div>
+      <div class="space-y-6">
+       <p class="text-gray-600 leading-relaxed text-lg">We are a premier coaching institute committed to nurturing future doctors and engineers. Our mission is to provide quality education with personalized attention to every student.</p>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-start gap-3">
+         <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800">Expert Faculty</h4>
+          <p class="text-sm text-gray-500">IIT &amp; AIIMS Alumni</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800">Modern Labs</h4>
+          <p class="text-sm text-gray-500">Practical Learning</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800">Small Batches</h4>
+          <p class="text-sm text-gray-500">Personal Attention</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800">Doubt Sessions</h4>
+          <p class="text-sm text-gray-500">24/7 Support</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Courses Section -->
+   <section id="courses" class="py-16" style="background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">What We Offer</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">Courses &amp; Subjects</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Medical / NEET -->
+      <div class="card-gradient rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all">
+       <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center shadow-lg">
+         <svg class="w-8 h-8 text-white" viewbox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+         </svg>
+        </div>
+        <div><span class="text-xs font-bold text-red-500 uppercase tracking-wider">Medical Stream</span>
+         <h3 class="text-2xl font-bold text-gray-800 heading-font">NEET Preparation</h3>
+        </div>
+       </div>
+       <p class="text-gray-600 mb-6">Comprehensive preparation for National Eligibility cum Entrance Test (NEET) for MBBS/BDS admissions.</p>
+       <div class="space-y-3">
+        <div class="flex items-center gap-3 bg-red-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-600 font-bold text-sm">🧬</span>
+         <div><span class="font-semibold text-gray-800">Biology</span> <span class="text-xs text-gray-500 block">Botany &amp; Zoology</span>
+         </div>
+        </div>
+        <div class="flex items-center gap-3 bg-blue-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">⚗️</span>
+         <div><span class="font-semibold text-gray-800">Chemistry</span> <span class="text-xs text-gray-500 block">Organic, Inorganic &amp; Physical</span>
+         </div>
+        </div>
+        <div class="flex items-center gap-3 bg-purple-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-sm">⚛️</span>
+         <div><span class="font-semibold text-gray-800">Physics</span> <span class="text-xs text-gray-500 block">Mechanics, Optics &amp; Modern</span>
+         </div>
+        </div>
+       </div>
+       <div class="mt-6 pt-6 border-t border-gray-100">
+        <div class="flex items-center justify-between"><span class="text-sm text-gray-500">Duration: 2 Years (11th &amp; 12th)</span> <a href="#register" class="text-red-500 font-bold text-sm hover:text-red-600">Apply Now →</a>
+        </div>
+       </div>
+      </div><!-- Engineering / JEE -->
+      <div class="card-gradient rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all">
+       <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center shadow-lg">
+         <svg class="w-8 h-8 text-white" viewbox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+         </svg>
+        </div>
+        <div><span class="text-xs font-bold text-blue-500 uppercase tracking-wider">Engineering Stream</span>
+         <h3 class="text-2xl font-bold text-gray-800 heading-font">JEE Preparation</h3>
+        </div>
+       </div>
+       <p class="text-gray-600 mb-6">Complete JEE Main &amp; Advanced preparation for admission to IITs, NITs and top engineering colleges.</p>
+       <div class="space-y-3">
+        <div class="flex items-center gap-3 bg-indigo-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-sm">📐</span>
+         <div><span class="font-semibold text-gray-800">Mathematics</span> <span class="text-xs text-gray-500 block">Calculus, Algebra &amp; Geometry</span>
+         </div>
+        </div>
+        <div class="flex items-center gap-3 bg-blue-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">⚗️</span>
+         <div><span class="font-semibold text-gray-800">Chemistry</span> <span class="text-xs text-gray-500 block">Organic, Inorganic &amp; Physical</span>
+         </div>
+        </div>
+        <div class="flex items-center gap-3 bg-purple-50 rounded-xl p-3"><span class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-sm">⚛️</span>
+         <div><span class="font-semibold text-gray-800">Physics</span> <span class="text-xs text-gray-500 block">Mechanics, Electro &amp; Thermo</span>
+         </div>
+        </div>
+       </div>
+       <div class="mt-6 pt-6 border-t border-gray-100">
+        <div class="flex items-center justify-between"><span class="text-sm text-gray-500">Duration: 2 Years (11th &amp; 12th)</span> <a href="#register" class="text-blue-500 font-bold text-sm hover:text-blue-600">Apply Now →</a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Faculty Section -->
+   <section id="faculty" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Meet Our Team</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">Expert Faculty</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6"><!-- Faculty 1 -->
+      <div class="faculty-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+        <svg class="w-24 h-24 text-blue-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+       </div>
+       <div class="p-4 text-center">
+        <h4 class="font-bold text-gray-800">Dr. Rajesh Kumar</h4>
+        <p class="text-sm text-blue-600 font-semibold">Physics</p>
+        <p class="text-xs text-gray-500 mt-1">IIT Delhi | 15 Yrs Exp</p>
+       </div>
+      </div><!-- Faculty 2 -->
+      <div class="faculty-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
+        <svg class="w-24 h-24 text-pink-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+       </div>
+       <div class="p-4 text-center">
+        <h4 class="font-bold text-gray-800">Dr. Priya Sharma</h4>
+        <p class="text-sm text-pink-600 font-semibold">Chemistry</p>
+        <p class="text-xs text-gray-500 mt-1">IISc Bangalore | 12 Yrs Exp</p>
+       </div>
+      </div><!-- Faculty 3 -->
+      <div class="faculty-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+        <svg class="w-24 h-24 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+       </div>
+       <div class="p-4 text-center">
+        <h4 class="font-bold text-gray-800">Dr. Anand Verma</h4>
+        <p class="text-sm text-green-600 font-semibold">Biology</p>
+        <p class="text-xs text-gray-500 mt-1">AIIMS Delhi | 18 Yrs Exp</p>
+       </div>
+      </div><!-- Faculty 4 -->
+      <div class="faculty-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+        <svg class="w-24 h-24 text-purple-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+       </div>
+       <div class="p-4 text-center">
+        <h4 class="font-bold text-gray-800">Prof. Sunil Mathur</h4>
+        <p class="text-sm text-purple-600 font-semibold">Mathematics</p>
+        <p class="text-xs text-gray-500 mt-1">IIT Bombay | 20 Yrs Exp</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Fees Section -->
+   <section id="fees" class="py-16" style="background: linear-gradient(180deg, #1a365d 0%, #2c5282 100%);">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-300 font-semibold text-sm uppercase tracking-wider">Investment in Future</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white heading-font mt-2">Course Fees</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"><!-- NEET Fee Card -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+       <div class="bg-gradient-to-r from-red-500 to-pink-500 p-6 text-center"><span class="text-white/80 text-sm uppercase tracking-wider">Medical Stream</span>
+        <h3 class="text-2xl font-bold text-white heading-font">NEET Course</h3>
+       </div>
+       <div class="p-8">
+        <div class="text-center mb-6"><span class="text-gray-400 text-lg line-through">₹1,80,000</span>
+         <div class="text-5xl font-bold text-gray-800 heading-font">
+          ₹1,50,000
+         </div><span class="text-gray-500">per year</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Complete Study Material</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Weekly Tests &amp; Analysis</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Doubt Clearing Sessions</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Online Test Series</span></li>
+        </ul><a href="#register" class="block w-full bg-gradient-to-r from-red-500 to-pink-500 text-white text-center py-3 rounded-xl font-bold hover:opacity-90 transition-all"> Enroll for NEET </a>
+       </div>
+      </div><!-- JEE Fee Card -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+       <div class="bg-gradient-to-r from-blue-500 to-indigo-500 p-6 text-center"><span class="text-white/80 text-sm uppercase tracking-wider">Engineering Stream</span>
+        <h3 class="text-2xl font-bold text-white heading-font">JEE Course</h3>
+       </div>
+       <div class="p-8">
+        <div class="text-center mb-6"><span class="text-gray-400 text-lg line-through">₹2,00,000</span>
+         <div class="text-5xl font-bold text-gray-800 heading-font">
+          ₹1,75,000
+         </div><span class="text-gray-500">per year</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">JEE Main + Advanced</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Mock Tests &amp; Analysis</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Personal Mentorship</span></li>
+         <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span> <span class="text-gray-600">Problem Solving Lab</span></li>
+        </ul><a href="#register" class="block w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-center py-3 rounded-xl font-bold hover:opacity-90 transition-all"> Enroll for JEE </a>
+       </div>
+      </div>
+     </div>
+     <p class="text-center text-blue-200 mt-8 text-sm">💰 EMI options available | 🎓 Scholarships for merit students up to 50% | 📞 Contact for sibling discounts</p>
+    </div>
+   </section><!-- Schedule Section -->
+   <section id="schedule" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Daily Routine</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">Class Schedule</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8"><!-- NEET Schedule -->
+      <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border border-red-100">
+       <h3 class="text-xl font-bold text-red-600 heading-font mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-red-500 text-white flex items-center justify-center text-sm">🩺</span> NEET Batch Schedule</h3>
+       <div class="space-y-3">
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">⚛️</span>
+          <div><span class="font-semibold text-gray-800">Physics</span> <span class="text-xs text-gray-500 block">Mon, Wed, Fri</span>
+          </div>
+         </div><span class="text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">8:00 - 10:00 AM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">⚗️</span>
+          <div><span class="font-semibold text-gray-800">Chemistry</span> <span class="text-xs text-gray-500 block">Mon, Wed, Fri</span>
+          </div>
+         </div><span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">10:30 - 12:30 PM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">🧬</span>
+          <div><span class="font-semibold text-gray-800">Biology</span> <span class="text-xs text-gray-500 block">Tue, Thu, Sat</span>
+          </div>
+         </div><span class="text-sm font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">8:00 - 11:00 AM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center">📝</span>
+          <div><span class="font-semibold text-gray-800">Doubt Session</span> <span class="text-xs text-gray-500 block">Daily</span>
+          </div>
+         </div><span class="text-sm font-bold text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full">4:00 - 6:00 PM</span>
+        </div>
+       </div>
+      </div><!-- JEE Schedule -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
+       <h3 class="text-xl font-bold text-blue-600 heading-font mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-blue-500 text-white flex items-center justify-center text-sm">⚙️</span> JEE Batch Schedule</h3>
+       <div class="space-y-3">
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">⚛️</span>
+          <div><span class="font-semibold text-gray-800">Physics</span> <span class="text-xs text-gray-500 block">Mon, Wed, Fri</span>
+          </div>
+         </div><span class="text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">2:00 - 4:00 PM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">⚗️</span>
+          <div><span class="font-semibold text-gray-800">Chemistry</span> <span class="text-xs text-gray-500 block">Tue, Thu, Sat</span>
+          </div>
+         </div><span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">2:00 - 4:00 PM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center">📐</span>
+          <div><span class="font-semibold text-gray-800">Mathematics</span> <span class="text-xs text-gray-500 block">Daily</span>
+          </div>
+         </div><span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">4:30 - 6:30 PM</span>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-sm">
+         <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">🎯</span>
+          <div><span class="font-semibold text-gray-800">Test &amp; Discussion</span> <span class="text-xs text-gray-500 block">Sunday</span>
+          </div>
+         </div><span class="text-sm font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">9:00 AM - 1:00 PM</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Results Section -->
+   <section id="results" class="py-16" style="background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Pride</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">Results &amp; Achievements</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+       <div class="text-5xl font-bold gold-accent heading-font">
+        127
+       </div>
+       <p class="text-gray-600 mt-2">Students in NEET 2024</p>
+       <div class="mt-4">
+        <div class="text-sm text-gray-500 mb-1">
+         Top 1000 AIR
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+         <div class="result-bar gold-bg h-3 rounded-full" style="width: 85%;"></div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+       <div class="text-5xl font-bold text-blue-600 heading-font">
+        98
+       </div>
+       <p class="text-gray-600 mt-2">IIT Selections 2024</p>
+       <div class="mt-4">
+        <div class="text-sm text-gray-500 mb-1">
+         JEE Advanced Qualified
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+         <div class="result-bar bg-blue-500 h-3 rounded-full" style="width: 92%;"></div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+       <div class="text-5xl font-bold text-green-600 heading-font">
+        45
+       </div>
+       <p class="text-gray-600 mt-2">AIIMS Selections</p>
+       <div class="mt-4">
+        <div class="text-sm text-gray-500 mb-1">
+         Government Medical Colleges
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+         <div class="result-bar bg-green-500 h-3 rounded-full" style="width: 78%;"></div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Top Rankers -->
+     <h3 class="text-2xl font-bold text-gray-800 heading-font text-center mb-8">🏆 Our Top Rankers 2024</h3>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white rounded-xl p-4 shadow-lg text-center border-2 border-yellow-400">
+       <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+        1
+       </div>
+       <h4 class="font-bold text-gray-800">Arjun Patel</h4>
+       <p class="text-xs text-blue-600 font-semibold">AIR 156 - NEET</p>
+       <p class="text-xs text-gray-500">AIIMS Delhi</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-lg text-center border-2 border-gray-300">
+       <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-400 to-gray-500 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+        2
+       </div>
+       <h4 class="font-bold text-gray-800">Sneha Gupta</h4>
+       <p class="text-xs text-blue-600 font-semibold">AIR 234 - JEE Adv</p>
+       <p class="text-xs text-gray-500">IIT Bombay</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-lg text-center border-2 border-orange-400">
+       <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+        3
+       </div>
+       <h4 class="font-bold text-gray-800">Rahul Singh</h4>
+       <p class="text-xs text-blue-600 font-semibold">AIR 412 - NEET</p>
+       <p class="text-xs text-gray-500">AIIMS Jodhpur</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-lg text-center">
+       <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
+        4
+       </div>
+       <h4 class="font-bold text-gray-800">Priya Sharma</h4>
+       <p class="text-xs text-blue-600 font-semibold">AIR 523 - JEE Adv</p>
+       <p class="text-xs text-gray-500">IIT Delhi</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Registration Section -->
+   <section id="register" class="py-16 gradient-bg">
+    <div class="max-w-4xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-300 font-semibold text-sm uppercase tracking-wider">Join Us Today</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white heading-font mt-2">Register Here</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="bg-white rounded-3xl p-8 shadow-2xl">
+      <form id="registration-form" class="space-y-6">
+       <div class="grid md:grid-cols-2 gap-6">
+        <div><label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Enter your full name">
+        </div>
+        <div><label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">Gender *</label> <select id="gender" name="gender" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"> <option value="">Select Gender</option> <option value="Male">Male</option> <option value="Female">Female</option> <option value="Other">Other</option> </select>
+        </div>
+       </div>
+       <div><label for="address" class="block text-sm font-semibold text-gray-700 mb-2">Address *</label> <textarea id="address" name="address" required rows="2" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Enter your complete address"></textarea>
+       </div>
+       <div class="grid md:grid-cols-2 gap-6">
+        <div><label for="percentage" class="block text-sm font-semibold text-gray-700 mb-2">10th/12th Percentage *</label> <input type="text" id="percentage" name="percentage" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="e.g., 85.5%">
+        </div>
+        <div><label for="aadhar" class="block text-sm font-semibold text-gray-700 mb-2">Aadhar Number *</label> <input type="text" id="aadhar" name="aadhar" required pattern="[0-9]{12}" maxlength="12" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="12-digit Aadhar number">
+        </div>
+       </div>
+       <div class="grid md:grid-cols-2 gap-6">
+        <div><label for="mobile" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number *</label> <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" maxlength="10" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="10-digit mobile number">
+        </div>
+        <div><label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="your.email@example.com">
+        </div>
+       </div>
+       <div><label class="block text-sm font-semibold text-gray-700 mb-3">Select Branch *</label>
+        <div class="grid grid-cols-2 gap-4"><label class="relative cursor-pointer"> <input type="radio" name="branch" value="NEET" required class="peer sr-only">
+          <div class="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-red-500 peer-checked:bg-red-50 transition-all flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white">🩺</span>
+           <div><span class="font-bold text-gray-800">NEET</span> <span class="text-xs text-gray-500 block">Medical Stream</span>
+           </div>
+          </div></label> <label class="relative cursor-pointer"> <input type="radio" name="branch" value="JEE" required class="peer sr-only">
+          <div class="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-50 transition-all flex items-center gap-3"><span class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white">⚙️</span>
+           <div><span class="font-bold text-gray-800">JEE</span> <span class="text-xs text-gray-500 block">Engineering Stream</span>
+           </div>
+          </div></label>
+        </div>
+       </div>
+       <div id="form-message" class="hidden p-4 rounded-xl"></div><button type="submit" id="submit-btn" class="w-full gold-bg text-blue-900 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg transform hover:scale-[1.02] flex items-center justify-center gap-2"> <span id="submit-text">Submit Registration</span>
+        <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewbox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg></button>
+      </form>
+      <p class="text-center text-gray-500 text-sm mt-6">By registering, you agree to our terms and conditions. We'll contact you within 24 hours.</p>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Get In Touch</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 heading-font mt-2">Contact Us</h2>
+      <div class="w-24 h-1 gold-bg mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center p-6 rounded-2xl bg-blue-50 hover:bg-blue-100 transition-all">
+       <div class="w-16 h-16 rounded-full bg-blue-600 mx-auto mb-4 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+       </div>
+       <h3 class="font-bold text-gray-800 mb-2">Phone</h3>
+       <p id="contact-phone-display" class="text-blue-600 font-semibold">+91 98765 43210</p>
+       <p class="text-gray-500 text-sm">+91 87654 32109</p>
+      </div>
+      <div class="text-center p-6 rounded-2xl bg-green-50 hover:bg-green-100 transition-all">
+       <div class="w-16 h-16 rounded-full bg-green-600 mx-auto mb-4 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+       </div>
+       <h3 class="font-bold text-gray-800 mb-2">Email</h3>
+       <p id="contact-email-display" class="text-green-600 font-semibold">info@coachingexcellence.com</p>
+       <p class="text-gray-500 text-sm">admissions@coachingexcellence.com</p>
+      </div>
+      <div class="text-center p-6 rounded-2xl bg-purple-50 hover:bg-purple-100 transition-all">
+       <div class="w-16 h-16 rounded-full bg-purple-600 mx-auto mb-4 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+       </div>
+       <h3 class="font-bold text-gray-800 mb-2">Location</h3>
+       <p class="text-purple-600 font-semibold">123 Education Street</p>
+       <p class="text-gray-500 text-sm">Knowledge City, India - 400001</p>
+      </div>
+     </div>
+     <div class="mt-12 text-center">
+      <p class="text-gray-600 mb-4">Follow us on social media for updates:</p>
+      <div class="flex justify-center gap-4"><a href="#" class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-pink-700 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-blue-400 flex items-center justify-center text-white hover:bg-blue-500 transition-all">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="gradient-bg py-8">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+        <svg class="w-6 h-6 text-blue-800" viewbox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+        </svg>
+       </div><span class="text-white font-bold heading-font">Coaching Centre for Excellence</span>
+      </div>
+      <p class="text-blue-200 text-sm">© 2025 All Rights Reserved | Designed with ❤️ for Future Doctors &amp; Engineers</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      institute_name: 'Coaching Centre for Excellence',
+      tagline: 'Your Gateway to Medical & Engineering Dreams',
+      about_title: 'About Us',
+      contact_phone: '+91 98765 43210',
+      contact_email: 'info@coachingexcellence.com'
+    };
+
+    let config = { ...defaultConfig };
+    let registrations = [];
+    let recordCount = 0;
+
+    // Element SDK handlers
+    const elementHandler = {
+      defaultConfig,
+      onConfigChange: async (newConfig) => {
+        config = { ...defaultConfig, ...newConfig };
+        
+        // Update UI elements
+        const navTitle = document.getElementById('nav-title');
+        const heroTitle = document.getElementById('hero-title');
+        const heroTagline = document.getElementById('hero-tagline');
+        const aboutHeading = document.getElementById('about-heading');
+        const contactPhoneDisplay = document.getElementById('contact-phone-display');
+        const contactEmailDisplay = document.getElementById('contact-email-display');
+        
+        if (navTitle) navTitle.textContent = config.institute_name;
+        if (heroTitle) heroTitle.textContent = config.institute_name;
+        if (heroTagline) heroTagline.textContent = config.tagline;
+        if (aboutHeading) aboutHeading.textContent = config.about_title;
+        if (contactPhoneDisplay) contactPhoneDisplay.textContent = config.contact_phone;
+        if (contactEmailDisplay) contactEmailDisplay.textContent = config.contact_email;
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['institute_name', config.institute_name || defaultConfig.institute_name],
+        ['tagline', config.tagline || defaultConfig.tagline],
+        ['about_title', config.about_title || defaultConfig.about_title],
+        ['contact_phone', config.contact_phone || defaultConfig.contact_phone],
+        ['contact_email', config.contact_email || defaultConfig.contact_email]
+      ])
+    };
+
+    // Data SDK handlers
+    const dataHandler = {
+      onDataChanged: (data) => {
+        registrations = data;
+        recordCount = data.length;
+      }
+    };
+
+    // Initialize SDKs
+    async function initSDKs() {
+      if (window.elementSdk) {
+        await window.elementSdk.init(elementHandler);
+      }
+      
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Failed to initialize Data SDK');
+        }
+      }
+    }
+
+    // Form submission handler
+    function setupForm() {
+      const form = document.getElementById('registration-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const submitText = document.getElementById('submit-text');
+      const submitSpinner = document.getElementById('submit-spinner');
+      const formMessage = document.getElementById('form-message');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Check record limit
+        if (recordCount >= 999) {
+          formMessage.className = 'p-4 rounded-xl bg-red-100 text-red-700';
+          formMessage.textContent = 'Registration limit reached. Please contact us directly.';
+          formMessage.classList.remove('hidden');
+          return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = 'Submitting...';
+        submitSpinner.classList.remove('hidden');
+        formMessage.classList.add('hidden');
+
+        const formData = {
+          name: document.getElementById('name').value,
+          gender: document.getElementById('gender').value,
+          address: document.getElementById('address').value,
+          percentage: document.getElementById('percentage').value,
+          aadhar: document.getElementById('aadhar').value,
+          mobile: document.getElementById('mobile').value,
+          email: document.getElementById('email').value,
+          branch: document.querySelector('input[name="branch"]:checked').value,
+          createdAt: new Date().toISOString()
+        };
+
+        if (window.dataSdk) {
+          const result = await window.dataSdk.create(formData);
+          
+          if (result.isOk) {
+            formMessage.className = 'p-4 rounded-xl bg-green-100 text-green-700';
+            formMessage.innerHTML = '<strong>🎉 Registration Successful!</strong><br>Thank you for registering. Our team will contact you within 24 hours.';
+            formMessage.classList.remove('hidden');
+            form.reset();
+          } else {
+            formMessage.className = 'p-4 rounded-xl bg-red-100 text-red-700';
+            formMessage.textContent = 'Registration failed. Please try again or contact us directly.';
+            formMessage.classList.remove('hidden');
+          }
+        } else {
+          // Fallback when SDK not available
+          formMessage.className = 'p-4 rounded-xl bg-green-100 text-green-700';
+          formMessage.innerHTML = '<strong>🎉 Registration Received!</strong><br>Thank you for your interest. Our team will contact you soon.';
+          formMessage.classList.remove('hidden');
+          form.reset();
+        }
+
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.textContent = 'Submit Registration';
+        submitSpinner.classList.add('hidden');
+      });
+    }
+
+    // Mobile menu toggle
+    function setupMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close menu when clicking a link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Initialize everything
+    initSDKs();
+    setupForm();
+    setupMobileMenu();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c0ce54383125483',t:'MTc2ODg5NDUzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
